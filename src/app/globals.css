@@ -2,26 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+@layer base {
+  html {
+    @apply text-white;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  .background-blur::after,
+  .background-blur::before {
+    @apply absolute w-[235px] h-[355px] rounded-full blur-[220px];
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.mySwiper > .swiper-wrapper > .swiper-slide {
+  max-width: 250px;
+}
+
+.swiper-wrapper {
+  padding-bottom: 50px;
+}
+
+.swiper-pagination-bullet {
+  border-radius: 10px !important;
+}
+
+.swiper-pagination-bullet-active {
+  width: 25px !important;
+}
+
+:root {
+  --swiper-pagination-color: #fd346e;
+  --swiper-pagination-bullet-inactive-color: #351b2b;
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  --swiper-pagination-bullet-width: 11px;
+  --swiper-pagination-bullet-height: 10px;
+  --swiper-pagination-bullet-horizontal-gap: 2px;
+}
+
+.bg-header {
+  background-image: url("../../public/layer.png");
+  background-position: center;
+  background-size: contain;
 }
